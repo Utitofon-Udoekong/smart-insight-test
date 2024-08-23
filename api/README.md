@@ -89,5 +89,6 @@ This will start your Node.js server and test the database connection. If the con
 
 - All tests are to be done locally. 
 - The user/create endpoint will be hit every hour. You can modify the duration variable to test it at different time intervals
+- Postman API DOCS AT [Postman documentation reference](https://www.postman.com/aerospace-technologist-82445773/workspace/my-workspace/api/de3909d2-2e13-406c-a93b-3b8453d19f7c/collection/28244939-572800b0-091c-4aeb-9a16-c3edb5912249?action=share&source=copy-link&creator=28244939)
 
 By following these steps, you can set up the Node.js API connected to a MySQL database.
