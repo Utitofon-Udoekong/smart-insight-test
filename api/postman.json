@@ -1,0 +1,349 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "SmartThings API",
+      "description": "Create and read autobots"
+    },
+    "paths": {
+      "users": {
+        "parameters": [
+        ],
+        "get": {
+          "summary": "Read all users",
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "users/create": {
+        "parameters": [
+        ],
+        "post": {
+          "summary": "Creates users",
+          "responses": {
+            "201": {
+              "description": "Users created successully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "users/{id}": {
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The unique identifier of the user",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          }
+        ],
+        "get": {
+          "summary": "Read a user",
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "No user found for the provided `id`",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Unexpected error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "users/{id}/posts": {
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The unique identifier of the user",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          }
+        ],
+        "get": {
+          "summary": "Reads all posts for a user",
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Post"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Incorrect user id used",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "users/posts/{id}": {
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The unique identifier of the post",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          }
+        ],
+        "get": {
+          "summary": "Reads a post",
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Post"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Post does not exist",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "users/posts/{id}/comments": {
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The unique identifier of the post",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          }
+        ],
+        "get": {
+          "summary": "Reads all comments for a given post id",
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Comment"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Incorrect post id used",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "users/comments/{id}": {
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The unique identifier of the comment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/id"
+            }
+          }
+        ],
+        "get": {
+          "summary": "Reads a comment",
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Comment"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Incorrect comment id used",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "id": {
+          "description": "The unique identifier of a model",
+          "type": "string"
+        },
+        "User": {
+          "type": "object",
+          "required": [
+            "id",
+            "name",
+            "email"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/components/schemas/id"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            }
+          }
+        },
+        "Post": {
+          "type": "object",
+          "required": [
+            "id",
+            "userId",
+            "title",
+            "body"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/components/schemas/id"
+            },
+            "userId": {
+              "$ref": "#/components/schemas/id"
+            },
+            "title": {
+              "type": "string"
+            },
+            "body": {
+              "type": "string"
+            }
+          }
+        },
+        "Comment": {
+          "type": "object",
+          "required": [
+            "id",
+            "postId",
+            "name",
+            "email",
+            "body"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/components/schemas/id"
+            },
+            "postId": {
+              "$ref": "#/components/schemas/id"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "body": {
+              "type": "string"
+            }
+          }
+        },
+        "Error": {
+          "type": "object",
+          "required": [
+            "message"
+          ],
+          "properties": {
+            "message": {
+              "description": "A human readable error message",
+              "type": "string"
+            }
+          }
+        }
+      },
+      "securitySchemes": {
+        "AuthorizationHeader": {
+          "type": "authorizationHeader",
+          "in": "header",
+          "name": "Authorization"
+        }
+      }
+    },
+    "security": [
+      {
+        "AuthorizationHeader": []
+      }
+    ]
+  }
