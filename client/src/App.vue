@@ -31,22 +31,6 @@ watchEffect(async () => {
     <p v-if="isLoading">Loading...</p>
     <p v-if="error">{{ error }}</p>
     <p>Current Autobot count: {{ autobots.length }}</p>
-
-    <table>
-      <thead>
-        <th>Id</th>
-        <th>Name</th>
-        <th>CreatedAt</th>
-      </thead>
-      <tbody>
-        <tr v-for="bot in autobots">
-          <td>{{ bot.id }}</td>
-          <td>{{ bot.name }}</td>
-          <td>{{ bot.createdAt }}</td>
-        </tr>
-        
-      </tbody>
-    </table>
   </body>
 </template>
 
