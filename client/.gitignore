@@ -12,9 +12,9 @@ node_modules
 dist
 dist-ssr
 coverage
-
 .env
 !.env.example
+
 *.local
 
 /cypress/videos/
@@ -31,3 +31,4 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+

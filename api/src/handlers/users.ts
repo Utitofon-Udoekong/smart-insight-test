@@ -84,8 +84,10 @@ export async function getUsers(
   res: Response,
   next: NextFunction
 ) {
-  console.log(req.headers.authorization)
   try {
+    // Returns the first 10 users in the table. With more time,
+    // we can make provision to order the query by the dates and
+    // other limits
     const [rows] = await pool.query("SELECT * FROM users LIMIT 10");
     const rowQuery = (rows as QueryResult[]);
     if (rowQuery.length > 0) {
