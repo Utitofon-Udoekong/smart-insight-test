@@ -18,6 +18,7 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 ```sh
 npm install
 ```
+Replace the VITE_API_BASE_URL variable in your env file with the url of your local api server
 
 ### Compile and Hot-Reload for Development
 
